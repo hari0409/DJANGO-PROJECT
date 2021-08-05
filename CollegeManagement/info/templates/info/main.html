@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    {% load static %}
+    <!-- Bootstrap core CSS-->
+    <link href="{% static '/info/bootstrap/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="{% static '/info/bootstrap/vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+
+    <style>
+        #Heading{
+        background-color: #4c2169;
+        height: 100px;
+        }
+        #CollegeManagement{
+        color: white;
+        padding-top: 1%;
+        padding-left: 3%;
+        font-size: xx-large;
+        }
+        #body{
+            width: 100%;
+            height: 100vh;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+
+
+#Footer{
+    height: 110px;
+    background-color: #4c2169;
+    color: white;
+    margin-top: 450px;
+    padding-top: 30px;
+    padding-left: 15px;
+}
+
+.FooterContactUs{
+    float: right;
+    margin-right: 30px;
+}
+
+.FooterContactUs image{
+    margin-right: 20px;
+}
+
+.FooterContactUs button{
+    background-color: #1f4d6e;
+    border: 0;
+}
+
+.FooterContactUs button:hover{
+    cursor: pointer;
+}
+ 
+        #LogoutButton{
+            color: white;
+        padding-top: 3%;
+        padding-left: 3%;
+        font-size: medium;
+        text-decoration: none;
+        font-weight: 100;
+        margin-left: 1150px;
+        text-align: right;
+        display:flex;
+        }
+        #AsideHeading{
+            float: left;
+            width: 700px;
+        }
+        #items{
+            width: 90%;
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+        } 
+        #items h1{
+            font-size: 30px;
+        }
+        #items p{ 
+            margin: 10px 0 40px;
+            font: 14px;
+            height: 70px;
+            color: rgb(0, 0, 0); 
+            padding-top: 10px;
+        }
+        #course{
+            width: 80;
+            margin: auto;
+            text-align: center;
+            padding-top: 100px;
+        } 
+        #row{
+            margin-top: 5%;
+            justify-content: space-between;
+            display: flex;
+        } 
+        #course-col{
+            flex-basis: 31%;
+            background: #f3d1ef;
+            margin-bottom: 5%;
+            padding: 20px 12px;
+            box-sizing: border-box;
+            /* transition: 0.5s; */
+            border-radius: 20px;
+            border-style: solid;
+        /* border-radius: 20px; */
+            border-width: 1px;
+            border-color: black;
+        }
+        #course-col h3{
+            color: black;
+            text-align: center;
+            font-weight: 600;
+        } 
+        #course-col:hover{
+            box-shadow: 0 0 20px 0px rgb(255, 255, 255);
+        }
+        #hero-btn{
+            display: inline-block;
+            text-decoration: none;
+            border: 1px solid rgb(0, 0, 0);
+            padding: 13px 34px;
+            font-size: 16px;
+            background: transparent;
+            position: relative;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+.navbar1{
+  
+  background-color: #4c2169;
+    height: 100px;
+    margin-bottom: 60px;
+}
+.navbar1 a{
+  color:white;
+  text-decoration: none;
+}
+.navbar1-brand-mr-1{
+  font-size: x-large;
+}
+        
+    </style> 
+</head>
+
+<body>
+    <div id="body">
+        <nav class="navbar1 navbar navbar-expand navbar-dark">
+
+            <a class="navbar1-brand-mr-1" href="{% url 'index' %}">CollegeManagement</a>
+      
+            <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+              <i class="fas fa-bars"></i>
+            </button>
+      
+            <!-- Navbar -->
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                      {% if request.user.is_student %} <!--nav-link text-capitalize-->
+                      <a class="nav-link" >{{ request.user.student.name }}</a>
+                      {% elif request.user.is_teacher %}
+                          <a class="nav-link">{{ request.user.teacher.name }}</a>
+                      {% endif %}
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'logout' %}" data-toggle="modal" data-target="#logoutModal">Logout</a>
+                  </li>
+                </ul>
+              </div>
+      
+          </nav>
+        <!-- items -->
+        <section id="course">
+            <div id="items">
+            <div id="row">
+                <div id="course-col">
+                    <h3>Marks</h3>
+                    <p>The marks that you have scored in CAT-1,CAT-2,FAT will be displayed here</p>
+                    <a href="{% url 'marks_list' request.user.student.USN %}" id="hero-btn">Marks</a>
+                </div>
+                <div id="course-col">
+                    <h3>Attendence</h3>
+                    <p>The Attendence for this semester until now will be displayed here</p>
+                    <a href="{% url 'attendance' request.user.student.USN %}" id="hero-btn">Attendence</a>
+                </div>
+                <div id="course-col">
+                    <h3>TimeTable</h3>
+                    <p>The TimeTable that you have opted for this semester will be shown here</p>
+                    <a href="{% url 'timetable' request.user.student.class_id_id %}" id="hero-btn">TimeTable</a>
+                </div>
+            </div>
+        </section>
+        <div id="Footer">
+            This is solely developed by &nbsp;&nbsp;IT development cell
+        </div>
+        
+    </div>
+</body>
+</html>

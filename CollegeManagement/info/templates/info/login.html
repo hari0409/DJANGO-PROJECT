@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login</title>
+
+      {% load static %}
+      <!-- Bootstrap core CSS-->
+    <link href="{% static '/info/bootstrap/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="{% static '/info/bootstrap/vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+
+
+      <style>
+        #Heading{
+    background-color: #4c2169;
+    height: 100px;
+    }
+#CollegeManagement{
+    color: white;
+    padding-top: 2%;
+    padding-left: 3%;
+    }
+
+.LoginPage{
+    background-size: cover;
+    background-position: center;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.33), rgba(255, 255, 255, 0.33)), url('{% static "info/images/Background_Image_White.jpg" %}');
+    height: 100vh;
+}
+.LoginForm{
+    margin: 6% 10% 15% 70%;
+    padding: 20px 35px 20px 35px;
+    border-color: black;
+    background-color: white;
+    height: 330px;
+    width: 250px;
+    border-style: solid;
+    border-radius: 20px;
+    border-width: 1px;
+    z-index: 1;
+}
+
+
+.LoginFormLabel{
+    margin-top: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.LoginForm input{
+    height: 45px;
+    width:96%;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    font-family: "Roboto", sans-serif;
+    padding: 15px;
+    box-sizing: border-box;
+    background: #f2f2f2;
+    border: 0;
+    outline: 1;
+    font-size: 14px;
+}
+
+.LoginForm button{
+    font-family: "Roboto", sans-serif;
+    height: 30px;
+    width: 75px;
+    margin-right: 0;
+    margin-left: 60px;
+    margin-bottom: 0;
+    border: 0;
+    font-style: italic;
+    color: white;
+    background-color: #386B8C;
+}
+
+
+#LoginButton{
+    margin-left: 60px;
+    margin-top: 10px;
+    border: 0;
+    color: white;
+    background-color: #228B22; /* #228B22 -- Forest green*/
+}
+
+#LoginButton:hover{
+    background-color: darkgreen;
+    cursor: pointer;
+}
+
+.bg-dark{
+  background-image: linear-gradient(rgba(255, 255, 255, 0.33), rgba(255, 255, 255, 0.33)), url('{% static "info/images/Background_Image_White.jpg" %}');
+}
+
+
+#Footer{
+    height: 110px;
+    background-color: #4c2169;
+    color: white;
+    padding-top: 30px;
+    padding-left: 15px;
+}
+
+.FooterContactUs{
+    float: right;
+    margin-right: 30px;
+}
+
+.FooterContactUs image{
+    margin-right: 20px;
+}
+
+.FooterContactUs button{
+    background-color: #1f4d6e;
+    border: 0;
+}
+
+.FooterContactUs button:hover{
+    cursor: pointer;
+}
+       
+.navbar1{
+  
+  background-color: #4c2169;
+    height: 100px;
+    margin-bottom: 60px;
+}
+.navbar1 a{
+  color:white;
+  text-decoration: none;
+}
+.navbar1-brand-mr-1{
+  font-size: x-large;
+}
+
+      </style>
+
+  </head>
+
+  <body  >
+
+    <div >
+      <div >
+      
+      <nav class="navbar1 navbar navbar-expand navbar-dark">
+
+        <a class="navbar1-brand-mr-1" href="{% url 'index' %}">CollegeManagement</a>
+  
+        <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+          <i class="fas fa-bars"></i>
+        </button>
+  
+        <!-- Navbar -->
+  
+      </nav>
+        <!-- <div class="card-header">Login</div> -->
+        <div class="LoginForm">
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button  class="btn btn-success" type="submit" id="LoginButton">Login</button>
+            </form>
+
+        </div>
+      </div>
+      <div id="Footer">
+
+        This is solely developed by &nbsp;&nbsp;IT development cell
+    </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static '/info/bootstrap/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/info/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static '/info/bootstrap/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  </body>
+
+</html>
